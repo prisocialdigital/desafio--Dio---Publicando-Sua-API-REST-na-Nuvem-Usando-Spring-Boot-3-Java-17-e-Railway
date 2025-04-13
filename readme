@@ -1,0 +1,67 @@
+# Azure Fit Advisor
+
+**Avalie em minutos se a Microsoft Azure é a melhor escolha para seu cenário de tecnologia.**
+
+---
+
+## Visão Geral
+
+O **Azure Fit Advisor** é uma **API REST** e/ou aplicação web que simula uma avaliação técnica consultiva para empresas que estão considerando **migrar para o Microsoft Azure**.
+
+Seu objetivo é responder **três perguntas críticas** de forma automatizada:
+
+1. Vale a pena migrar para a Azure (ou iniciar com ela)?
+2. Quanto tempo isso custará para a equipe e os parceiros?
+3. Quais serviços da Azure são mais adequados para o seu contexto?
+
+---
+
+## Casos de Uso
+
+- Ferramenta de **pré-venda consultiva**
+- Suporte para SDRs e **times de vendas técnicas**
+- Integração com **CRMs, portais de atendimento ou sistemas internos**
+- Produto digital para **agências, parceiros Microsoft ou integradores**
+- **Prova de valor** para justificar projetos de nuvem
+
+---
+
+## Tech Stack
+
+- **Java 17** + **Spring Boot 3**
+- **PostgreSQL** ou **SQLite** (persistência de relatórios e métricas)
+- **Swagger/OpenAPI** (documentação REST)
+- **Railway** (deploy e ambiente gerenciado)
+- DTOs para entrada/saída
+- Sistema de pontuação e lógica desacoplados
+
+---
+
+## Como Funciona?
+
+### 1. Formulário de Análise Técnica
+
+O sistema coleta dados como:
+
+| Categoria                  | Exemplo de Pergunta                                              |
+|---------------------------|------------------------------------------------------------------|
+| Infraestrutura atual      | "Você possui servidores locais ou já está em alguma cloud?"     |
+| Volume de dados           | "Quantos GB/TB você movimenta por mês?"                         |
+| Integrações legadas       | "Quantos sistemas legados ou ERPs você usa?"                    |
+| Alta disponibilidade      | "Você precisa de uptime superior a 99,9%?"                      |
+| Ferramentas Microsoft     | "Seu time usa Office 365, Teams, Power BI?"                     |
+| Equipe técnica            | "Quantas pessoas técnicas internas você tem para migração?"     |
+| Compliance e Segurança    | "Você precisa atender normas como LGPD, HIPAA, etc?"            |
+
+---
+
+### 2. Algoritmo de Scoring + Estimativas
+
+Cada resposta recebe pesos e impacta o tempo estimado e a pontuação:
+
+```java
+Exemplos:
+- Infraestrutura legada complexa  → +40h
+- Muitos sistemas legados         → +60h
+- Uso alto de Microsoft           → -30h
+- Sem equipe técnica              → +80h
